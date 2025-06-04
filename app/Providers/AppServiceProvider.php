@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use App\Listeners\LogSuccessfulLogin;
 use App\Policies\AdminPolicy;
+use Illuminate\Support\Facades\URL;
 
 
 
@@ -48,5 +49,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('manage-users', [AdminPolicy::class, 'manageUsers']);
         Gate::define('promote-users', [AdminPolicy::class, 'promoteUsers']);
         Gate::define('demote-admins', [AdminPolicy::class, 'demoteAdmins']);
-}
+
+/*       URL::forceScheme('https');
+ */ }
 }

@@ -51,7 +51,7 @@
                         <div class="flex items-center space-x-4">
                             @if($application->profile_photo_path)
                             <div class="flex-shrink-0 relative group">
-                                <img src="{{ Storage::url($application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-14 w-14 rounded-full object-cover border-2 border-gray-200 shadow-sm transition-all duration-300 group-hover:border-indigo-300 group-hover:shadow-md">
+                                <img src="{{ asset('storage/' .$application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-14 w-14 rounded-full object-cover border-2 border-gray-200 shadow-sm transition-all duration-300 group-hover:border-indigo-300 group-hover:shadow-md">
                             </div>
                             @else
                             <div class="flex-shrink-0">
@@ -145,7 +145,7 @@
                         <div class="flex items-center mb-4 md:mb-0">
                             @if($application->profile_photo_path)
                             <div class="mr-4 flex-shrink-0">
-                                <img src="{{ Storage::url($application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-16 w-16 rounded-full object-cover border-2 border-gray-200 shadow-sm">
+                                <img src="{{ asset('storage/' .$application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-16 w-16 rounded-full object-cover border-2 border-gray-200 shadow-sm">
                             </div>
                             @endif
                             <div>
@@ -210,7 +210,7 @@
 
                                 @if($application->profile_photo_path)
                                 <div class="mb-6 flex justify-center">
-                                    <img src="{{ Storage::url($application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-36 w-36 rounded-full object-cover border-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+                                    <img src="{{ asset('storage/' .$application->profile_photo_path) }}" alt="{{ $application->user->name }}" class="h-36 w-36 rounded-full object-cover border-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
                                 </div>
                                 @endif
 

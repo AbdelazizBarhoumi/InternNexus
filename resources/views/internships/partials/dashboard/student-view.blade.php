@@ -309,7 +309,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     @if($application->internship->employer->employer_logo)
-                                        <img src="{{ Storage::url($application->internship->employer->employer_logo) }}"
+                                        <img src="{{ asset('storage/' .$application->internship->employer->employer_logo) }}"
                                             alt="{{ $application->internship->employer->employer_name }}"
                                             class="h-6 w-6 rounded-full mr-2 object-contain {{ !$application->internship->employer->user->is_active ? 'opacity-50' : '' }}">
                                     @endif

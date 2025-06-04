@@ -82,7 +82,7 @@
             <div class="flex items-center">
                 <div class="w-8 h-8 rounded-md bg-{{$colorScheme}}-100 flex items-center justify-center mr-3 border border-{{$colorScheme}}-200">
                     @if($internship->employer && $internship->employer->employer_logo)
-                        <img src="{{ Storage::url($internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }}" class="w-full h-full object-contain">
+                        <img src="{{ asset('storage/' .$internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }}" class="w-full h-full object-contain">
                     @else
                         <span class="{{ $color['icon'] }} font-semibold text-sm">{{ $initials }}</span>
                     @endif

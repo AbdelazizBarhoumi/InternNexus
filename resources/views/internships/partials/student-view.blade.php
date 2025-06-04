@@ -1,7 +1,7 @@
 <div class="flex flex-col sm:flex-row justify-between gap-4 mb-6">
     <div class="flex items-center gap-4">
         @if($internship->employer->employer_logo)
-            <img src="{{ Storage::url($internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }} logo" class="h-16 w-16 object-contain rounded-lg border bg-white p-2">
+            <img src="{{ asset('storage/' .$internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }} logo" class="h-16 w-16 object-contain rounded-lg border bg-white p-2">
         @else
             <div class="h-16 w-16 bg-gray-200 rounded-lg flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

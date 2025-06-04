@@ -81,7 +81,7 @@
             <input type="file" id="profile_photo" name="profile_photo" class="mt-1 block w-full" accept="image/jpeg,image/png,image/jpg">
             @if(auth()->user()->student->profile_photo_path)
                 <div class="mt-2">
-                    <img src="{{ Storage::url(auth()->user()->student->profile_photo_path) }}" alt="Profile Photo" class="h-20 w-20 object-cover rounded-full">
+                    <img src="{{ asset('storage/' .auth()->user()->student->profile_photo_path) }}" alt="Profile Photo" class="h-20 w-20 object-cover rounded-full">
                 </div>
             @endif
             <x-input-error class="mt-2" :messages="$errors->get('profile_photo')" />

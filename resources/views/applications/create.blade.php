@@ -43,7 +43,7 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 @if($internship->employer->logo_path)
-                                    <img src="{{ Storage::url($internship->employer->logo_path) }}" alt="{{ $internship->employer->company_name }} logo" class="h-16 w-16 object-contain mr-4 rounded shadow-sm">
+                                    <img src="{{ asset('storage/' .$internship->employer->logo_path) }}" alt="{{ $internship->employer->company_name }} logo" class="h-16 w-16 object-contain mr-4 rounded shadow-sm">
                                 @else
                                     <div class="h-16 w-16 bg-gray-200 flex items-center justify-center text-gray-500 mr-4 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -209,7 +209,7 @@
 @if($student && $student->profile_photo_path)
 <div class="mt-4 flex items-center">
     <div class="flex-shrink-0">
-        <img src="{{ Storage::url($student->profile_photo_path) }}" alt="Profile Photo" 
+        <img src="{{ asset('storage/' .$student->profile_photo_path) }}" alt="Profile Photo" 
              class="h-20 w-20 rounded-full object-cover border-2 border-blue-300">
     </div>
     <div class="ml-4">

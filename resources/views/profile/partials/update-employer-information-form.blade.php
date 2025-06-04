@@ -33,7 +33,7 @@
             <input type="file" id="employer_logo" name="employer_logo" class="mt-1 block w-full" accept="image/jpeg,image/png,image/jpg,image/gif">
             @if(auth()->user()->employer->employer_logo)
                 <div class="mt-2">
-                    <img src="{{ Storage::url(auth()->user()->employer->employer_logo) }}" alt="Company Logo" class="h-20 object-contain">
+                    <img src="{{ asset('storage/' .auth()->user()->employer->employer_logo) }}" alt="Company Logo" class="h-20 object-contain">
                 </div>
             @endif
             <x-input-error class="mt-2" :messages="$errors->get('employer_logo')" />

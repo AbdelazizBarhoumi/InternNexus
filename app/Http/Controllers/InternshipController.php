@@ -41,7 +41,7 @@ class InternshipController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+        public function index(Request $request)
     {
         $baseQuery = Internship::with(['employer', 'tags'])
             // Only show internships from active users
@@ -68,14 +68,20 @@ class InternshipController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10, ['*'], 'page'); // Use default 'page' parameter
                             
-        return view('internships.index', [
-            'featuredInternships' => $featuredInternships,
-            'internships' => $regularInternships,
-            'tags' => Tag::whereHas('internships', function($query) {
+        // Get up to 15 random tags that are associated with active internships
+        $tags = Tag::whereHas('internships', function($query) {
                 $query->whereHas('employer.user', function($subQuery) {
                     $subQuery->where('is_active', true);
                 })->where('is_active', true);
-            })->get(),        
+            })
+            ->inRandomOrder()
+            ->limit(15)
+            ->get();
+        
+        return view('internships.index', [
+            'featuredInternships' => $featuredInternships,
+            'internships' => $regularInternships,
+            'tags' => $tags,
         ]);
     }
 
@@ -156,7 +162,7 @@ class InternshipController extends Controller
             'salary' => ['required', 'string', 'max:255', 'min:3'],
             'schedule' => ['required', 'string', 'max:255', Rule::in(['Full-time', 'Part-time', 'Remote', 'Hybrid'])],
             'location' => ['required', 'string', 'max:255', 'min:5'],
-            'description' => ['nullable', 'string', 'max:5000'],
+            'description' => ['     ', 'string', 'max:5000'],
             'duration' => ['nullable', 'string', 'max:255'],
             'deadline_date' => ['nullable', 'date', 'after:today'],
             'tags' => ['nullable', 'string', 'max:255'],

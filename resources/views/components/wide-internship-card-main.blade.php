@@ -83,7 +83,7 @@
             <div class="flex-shrink-0">
                 <div class="w-16 h-16 bg-{{$colorScheme}}-50 rounded-lg border border-gray-100 overflow-hidden shadow-sm flex items-center justify-center">
                     @if($internship->employer && $internship->employer->employer_logo)
-                        <img src="{{ Storage::url($internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }}" class="w-full h-full object-contain">
+                        <img src="{{ asset('storage/' .$internship->employer->employer_logo) }}" alt="{{ $internship->employer->employer_name }}" class="w-full h-full object-contain">
                     @elseif($internship->employer)
                         <span class="text-{{$colorScheme}}-700 font-semibold text-xl">{{ substr($internship->employer->employer_name, 0, 1) }}</span>
                     @else
