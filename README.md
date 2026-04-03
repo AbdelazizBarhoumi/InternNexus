@@ -1,61 +1,198 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# InternNexus - Internship Management & Placement System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive web application for managing internship listings, applications, and placements. InternNexus connects students with employers, streamlining the entire internship recruitment process.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### For Students
+- Browse and search internship listings with advanced filters (location, duration, compensation)
+- Create and manage student profiles with education, skills, and portfolio links
+- Submit applications with resume, cover letter, and transcript uploads
+- Track application status (pending, reviewing, interviewed, accepted, rejected)
+- View application history and receive status updates
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### For Employers
+- Create and manage company profiles
+- Post internship listings with tags, salary, schedule, and deadline information
+- Feature internships for increased visibility
+- Review and manage incoming applications
+- Update application statuses and add notes
+- Track view counts and application statistics
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### For Administrators
+- Comprehensive admin dashboard with analytics
+- User management (promote/demote admins, suspend/activate accounts)
+- Internship oversight and moderation
+- Application management across all employers
+- Account appeal handling for suspended users
+- Monthly statistics and reporting
 
-## Learning Laravel
+### General Features
+- Tag-based internship categorization and filtering
+- Advanced search with multiple filter options
+- Email verification for new accounts
+- Responsive design with Tailwind CSS
+- Real-time form validation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend:** PHP 8.2+, Laravel 12
+- **Frontend:** Blade Templates, Alpine.js, Tailwind CSS
+- **Build Tools:** Vite, PostCSS
+- **Database:** MySQL / SQLite
+- **Authentication:** Laravel Breeze, Laravel Sanctum
+- **Testing:** Pest PHP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Requirements
 
-## Laravel Sponsors
+- PHP >= 8.2
+- Composer
+- Node.js >= 18.x
+- npm or yarn
+- MySQL 8.0+ or SQLite
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Installation
 
-### Premium Partners
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/InternNexus.git
+   cd InternNexus
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Configure your database**
+   
+   Edit `.env` and set your database credentials:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=internnexus
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+   
+   Or for SQLite:
+   ```env
+   DB_CONNECTION=sqlite
+   ```
+
+6. **Run migrations**
+   ```bash
+   php artisan migrate
+   ```
+
+7. **Build frontend assets**
+   ```bash
+   npm run build
+   ```
+
+## Configuration
+
+### Mail Configuration
+Configure your mail settings in `.env` for email verification and notifications:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=your-smtp-host
+MAIL_PORT=587
+MAIL_USERNAME=your-username
+MAIL_PASSWORD=your-password
+MAIL_FROM_ADDRESS=noreply@yourdomain.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+### File Storage
+Uploaded resumes, transcripts, and profile photos are stored in the `storage/app` directory. Run the following to create a symbolic link:
+```bash
+php artisan storage:link
+```
+
+## Usage
+
+### Development Server
+Start the development server with hot-reloading:
+```bash
+composer run dev
+```
+
+This will start:
+- Laravel development server
+- Queue listener
+- Log viewer (Pail)
+- Vite dev server
+
+Or run individually:
+```bash
+php artisan serve
+npm run dev
+```
+
+### Running Tests
+```bash
+composer run test
+```
+
+### Production Build
+```bash
+npm run build
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+## User Roles
+
+| Role | Capabilities |
+|------|-------------|
+| **Student** | Browse internships, submit applications, manage profile |
+| **Employer** | All student capabilities + post internships, manage applications |
+| **Admin** | All capabilities + user management, content moderation |
+| **Super Admin** | All admin capabilities + promote/demote admins |
+
+## Project Structure
+
+```
+├── app/
+│   ├── Http/Controllers/    # Request handlers
+│   ├── Models/              # Eloquent models
+│   └── Policies/            # Authorization policies
+├── database/
+│   ├── migrations/          # Database schema
+│   ├── factories/           # Model factories
+│   └── seeders/             # Database seeders
+├── resources/
+│   └── views/               # Blade templates
+├── routes/
+│   ├── web.php              # Web routes
+│   ├── application.php      # Application routes
+│   ├── internship.php       # Internship routes
+│   └── profile.php          # Profile routes
+└── tests/                   # Test files
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
